@@ -9,3 +9,17 @@
 .full-length-img {
   max-width: 100%;
 }
+
+p {
+  font-family: Helvetica-Neue;
+  font-size: 1em;
+}
+
+.home-banner-notice {
+  font-weight: bold;
+  background-color: $theme-primary;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-size: 1em;
+  font-color: white;
+}
