@@ -24,6 +24,9 @@
     <!-- Custom styles for this template -->
     <link href="css/creative.min.css" rel="stylesheet">
 
+    <!-- Custom css for ICRS -->
+    <link href="css/icrs.css" rel="stylesheet">
+
   </head>
 
   <body id="page-top">
@@ -31,7 +34,9 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+          <img src="/assets/logo-raster-medres.png" class="navbar-logo" />
+        </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,13 +46,18 @@
               <a class="nav-link js-scroll-trigger" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+              <a class="nav-link js-scroll-trigger" href="#what-we-do">What we do</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a target="_none" class="nav-link js-scroll-trigger" href="http://icrobotics.co.uk/wiki/index.php/Main_Page">
+                Wiki
+              </a>
             </li>
           </ul>
         </div>
@@ -75,20 +85,31 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">We've got what you need!</h2>
+            <h2 class="section-heading text-white">
+              We've got what you need!
+            </h2>
             <hr class="light">
-            <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-            <a class="btn btn-default btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+            <p class="text-faded">
+              Welcome one, welcome all! Imperial College Robotics Society is
+              a student-led university club aiming to increase robotics
+              interest at Imperial College London and across the UK. We run
+              workshops, competitions and lectures to teach about robotics,
+              electronics and software as well as providing help (financial
+              and technical) to students looking to start a robotics project.
+            </p>
+            <a class="btn btn-default btn-xl js-scroll-trigger" href="#what-we-do">
+              Get Started!
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="services">
+    <section id="what-we-do">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading">At Your Service</h2>
+            <h2 class="section-heading">What do we do</h2>
             <hr class="primary">
           </div>
         </div>
@@ -98,29 +119,42 @@
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
               <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
-              <h3>Sturdy Templates</h3>
-              <p class="text-muted">Our templates are updated regularly so they don't break.</p>
+              <h3>Robotics 101</h3>
+              <p class="text-muted">
+                We run <a target="_blank" href="101.icrs.io">robotics 101</a>
+                , our flagship open source introductory robotics course,
+                throughout the academic year.
+              </p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
               <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
-              <h3>Ready to Ship</h3>
-              <p class="text-muted">You can use this theme as is, or you can make changes!</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
-              <h3>Up to Date</h3>
-              <p class="text-muted">We update dependencies to keep things fresh.</p>
+              <h3>Wednesday Hackdays</h3>
+              <p class="text-muted">
+                People work on various cool robotics projects on Wednesdays.
+                Everyone is
+              </p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
               <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
-              <h3>Made with Love</h3>
-              <p class="text-muted">You have to make your websites with love these days!</p>
+              <h3>Facilities for Makers</h3>
+              <p class="text-muted">
+                Laser cutter
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box">
+              <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+              <h3>External Competitions</h3>
+              <p class="text-muted">
+                We participate in external competitions such as
+                <a href="http://piwars.org/">piwars</a> and
+                <a href="http://www.eurobot.org/">eurobot</a>.
+              </p>
             </div>
           </div>
         </div>
@@ -234,20 +268,27 @@
     <section id="contact">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading">Let's Get In Touch!</h2>
-            <hr class="primary">
-            <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 ml-auto text-center">
-            <img src="/assets/signatures" />
-          </div>
-          <div class="col-lg-4 mr-auto text-center">
-            <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+          <div class="col-lg-12 mr-auto text-right">
             <p>
-              <a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a>
+              <a href="https://twitter.com/icrobotics">
+                <img class="footer-logo" src="/assets/signatures/sig_twitter.png" />
+              </a>
+            </p>
+            <p>
+              <a href="https://facebook.com/icrobotics/">
+                <img class="footer-logo" src="/assets/signatures/sig_insta.png" />
+              </a>
+            </p>
+            <p>
+              <a href="https://www.instagram.com/icrobotics/">
+                <img class="footer-logo" src="/assets/signatures/sig_fb.png" />
+              </a>
+            </p>
+            <p>
+              <a href="mailto:contact@icrs.io">
+                <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                contact@icrs.io
+              </a>
             </p>
           </div>
         </div>
