@@ -1,0 +1,109 @@
+---
+layout: default
+title: Projects
+---
+
+<section class="non-home-top bg-primary">
+  <div class="container">
+    <h2 class="section-heading text-white text-center">
+      Projects
+    </h2>
+    <hr class="light" />
+  </div>
+</section>
+
+<section class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto text-left">
+        <h2 class="section-heading">
+          Events Calendar
+        </h2>
+        <iframe src="https://calendar.google.com/calendar/embed?mode=AGENDA&amp;height=600&amp;wkst=1&amp;hl=en_GB&amp;bgcolor=%23FFFFFF&amp;src=icrobotics.co.uk_7vpig3lkheki7njbq1taq1soqo%40group.calendar.google.com&amp;color=%23125A12&amp;ctz=Europe%2FLondon" style="border-width:0" width="500" height="600" frameborder="0" scrolling="no"></iframe>
+      </div>
+      <div class="colmd-6">
+        <h2 class="section-heading">
+          Recurring Events and Courses
+        </h2>
+        <ul>
+            <li>Robotics 101</li>
+            <li>Christmas Dinners</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="what-we-do">
+  <div class="container text-center">
+    <h2 class="section-heading">
+      External Competitions
+    </h2>
+    <br />
+    <div class="row">
+      <div class="col-lg-6 text-center">
+        <h3 class="text-center">Piwars</h3>
+        <p class="text-center">
+          <img class="full-length-img" src="/assets/img/piwars.jpg" />
+        </p>
+        <div class="text-left">
+          <p>
+            <a href="http://piwars.org/">Pi wars</a> is a two-day,
+            challenge-based robotics compeition in which Raspberry pi
+            controlled robots compete in various challenges to earn points.
+            In previous years, we hold a local round, where teams from formed
+            by our society's members compete and the best team goes to
+            the final round in Cambridge.
+          </p>
+          <p>
+            {% if site.person_in_charge.piwars %}
+              For more information, please contact
+              {{ site.person_in_charge.piwars.name }} at
+              {{ site.person_in_charge.piwars.email }}.
+            {% else %}
+              More information about this year's piwars will be available
+              soon!
+            {% endif %}
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="thumbnail">
+          <h3 class="text-center">
+            Eurobot
+          </h3>
+          <p class="text-center">
+            <img class="full-length-img" src="/assets/img/eurobot.png" />
+          </p>
+          <div class="text-left">
+            <p>
+              <a href="http://www.eurobot.org/">Eurobot</a> is an international
+              robotics competition open to students and independent clubs. 
+              ICRS has first sent a team to Eurobot in 2011, and has since
+              them sent teams several times throughout the years. There is a
+              local round in UK and an international round hosted at different
+              locations throughout Europe.
+            </p>
+            <p>
+              {% if site.person_in_charge.eurobot %}
+                We have an entry this year's Eurobot. If you are interested in
+                participating, please get in touch with
+                {{ site.person_in_charge.eurobot.name }} via
+                {{ site.person_in_charge.eurobot.email }} who is the project
+                lead of this year's entry.
+              {% else %}
+                If you are an Imperial student (Undergraduate / Postgraduate)
+                interested in starting an entry for this year's Eurobot,
+                please send us an email at
+                <a href="mailto:{{ site.contact_email }}">
+                  {{ site.contact_email }}
+                </a>
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
