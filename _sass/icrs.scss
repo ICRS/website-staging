@@ -11,7 +11,7 @@
 }
 
 p {
-  font-family: Helvetica-Neue;
+  font-family: 'Roboto', sans-serif;
   font-size: 1em;
 }
 
@@ -26,4 +26,13 @@ p {
 
 .non-home-top {
   padding-top: 150px;
+}
+
+section#footer {
+  background-color: #666666;
+  color: white;
+
+  div {
+    font-weight: normal;
+  }
 }
