@@ -1,3 +1,14 @@
 sass:
   sass_dir: _sass
   style: compressed
+
+# Site contents configuration
+
+contact_email: contact@icrs.io
+person_in_charge:
+   eurobot:
+     name: Harry
+     email: harry@icrs.io
+   piwars:
+     name: Harry
+     email: harry@icrs.io
