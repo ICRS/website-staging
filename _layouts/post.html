@@ -1,0 +1,24 @@
+---
+layout: default
+section: blog
+---
+
+<section class="non-home-top bg-primary">
+  <div class="container">
+    <h2 class="section-heading text-white text-center">
+      Blog : {{ page.title }}
+    </h2>
+    <hr class="light" />
+    {% if page.author %}
+      <p class="text-center text-white">
+        {{ page.date | date: "%Y %B %d" }} | By <em>{{ page.author }}</em>
+      </p>
+    {% endif %}
+</section>
+
+<section class="">
+  <div class="container">
+    {{ content }}
+  </div>
+</section>
+

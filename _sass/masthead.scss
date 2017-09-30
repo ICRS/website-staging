@@ -8,6 +8,7 @@ header.masthead {
   background-image: url('../img/header.jpg');
   background-position: center;
   @include background-cover;
+  background-color: $gray-base;
   .header-content {
     position: relative;
     width: 100%;

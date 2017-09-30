@@ -131,8 +131,20 @@ title: Projects
   </div>
 </section>
 
-<section>
+<!-- TODO(fyquah): Properly write up about some projects at some point -->
+<!--
+<section id="projects-past-projects">
   <div class="container text-center">
     <h2 class="section-heading">Past Projects</h2>
   </div>
+  <ul>
+    {% for post in site.posts %}
+      {% unless post.draft  %}
+        {% if post.category == "project" %}
+          <li>{{ post.title }}</li>
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+  </ul>
 </section>
+-->
