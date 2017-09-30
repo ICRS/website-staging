@@ -36,3 +36,19 @@ section#footer {
     font-weight: normal;
   }
 }
+
+.home-banner-notice {
+  background-color: $theme-primary;
+  font-size: 2.5em;
+  color: white;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-radius: 1em;
+
+  a:link
+  a:visited
+  a:hover
+  a:active {
+    color: white;
+  }
+}
