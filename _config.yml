@@ -6,9 +6,9 @@ sass:
 
 contact_email: contact@icrs.io
 person_in_charge:
-   eurobot:
-     name: Harry
-     email: harry@icrs.io
-   piwars:
-     name: Harry
-     email: harry@icrs.io
+#   eurobot:
+#     name: Harry
+#     email: harry@icrs.io
+#   piwars:
+#     name: Harry
+#     email: harry@icrs.io
