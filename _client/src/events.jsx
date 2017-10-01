@@ -76,7 +76,7 @@ class TopSection extends React.Component {
         }
 
         return <div key={evt.id} className="container col-8">
-            <div className="jumbotron" style={{padding: "1rem 2rem"}}>
+            <div className={ "jumbotron " + this.props.additional_class } style={{padding: "1rem 2rem"}}>
                 <div className="row">
                     <div className="col-12 col-lg-2 col-xl-1">
                         <center><i className="fa fa-calendar fa-3x" aria-hidden="true"></i></center>
@@ -91,11 +91,29 @@ class TopSection extends React.Component {
     }
 
     render () {
-        return <div>
-            {this.props.events.map((evt) => {
-                return this._render_single_event(evt);
-            })}
-        </div>
+        return <section className={this.props.section_class}>
+            <h2 className="section-heading text-center">
+            { this.props.title }
+            </h2>
+            {(() => {
+                if (this.props.children) {
+                    return <div>
+                        {this.props.children}
+                    </div>
+                } else {
+                    return <br />
+                }
+            })()}
+            {(() => {
+                if (this.props.events === null) {
+                    return <div className="container text-center"><div className={this.props.additional_class}>Loading ...</div></div>
+                } else {
+                    return this.props.events.map((evt) => {
+                        return this._render_single_event(evt);
+                    })
+                }
+            })()}
+        </section>
     }
 }
 
@@ -111,7 +129,7 @@ function maybe_parse_date (obj) {
     return obj;
 }
 
-function getDate(obj) {
+function getStartDate(obj) {
     if (obj.start) {
         if (obj.start.date) {
             return obj.start.date.getTime();
@@ -127,7 +145,7 @@ class App extends React.Component {
 
     constructor () {
         super();
-        this.state = {events: null}
+        this.state = {upcoming_events: null, past_events: null}
     }
 
     componentDidMount () {
@@ -142,14 +160,25 @@ class App extends React.Component {
                         });
                     });
                     events = events.sort((a, b) => {
-                        a = getDate(a);
-                        b = getDate(b);
+                        a = getStartDate(a);
+                        b = getStartDate(b);
 
                         if (a < b) return -1;
                         else if (a > b) return 1;
                         else return 0;
                     });
-                    this.setState({ events: events });
+                    let now = new Date();
+                    let upcoming_events = events.filter((evt) => {
+                        return getStartDate(evt) >= now.getTime();
+                    });
+                    let past_events = events.filter((evt) => {
+                        return getStartDate(evt) < now.getTime();
+                    });
+                    past_events.reverse();
+                    this.setState({
+                        upcoming_events: upcoming_events,
+                        past_events: past_events,
+                    });
                 });
         });
         cb();
@@ -159,13 +188,21 @@ class App extends React.Component {
     }
 
     render () {
-        if (this.state.events === null) {
-            return <div className="text-center">Loading ...</div>
-        } else {
-            return <div>
-                <TopSection events={this.state.events} />
-            </div>
-        }
+        let google_calendar_link = "https://calendar.google.com/calendar/embed?src=icrobotics.co.uk_7vpig3lkheki7njbq1taq1soqo%40group.calendar.google.com&ctz=Europe/London";
+
+        return <div>
+            <TopSection section_class="non-home-top bg-primary" events={this.state.upcoming_events} title="Upcoming events"
+              additional_class="white-jumbotron">
+                <br />
+                <center>
+                    <a target="_none" href={google_calendar_link} className="btn btn-default btn-xl sr-button">
+                        Subscribe
+                    </a>
+                </center>
+                <br />
+            </TopSection>
+            <TopSection events={this.state.past_events} title="Past Events" additional_class="magic-jumbotron" />
+        </div>
     }
 }
 
