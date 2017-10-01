@@ -10,12 +10,17 @@ js: /assets/js/home.js
       <h1 id="homeHeading">
         <img style="max-width: 100%" src ="/assets/logo_long.png" />
       </h1>
-      <hr>
-        <a href="/events">
-          <p class="home-banner-notice">
-            ICRS Open Day on Wednesday (4 October 2016)!
-          </p>
-        </a>
+      {% if site.special_notice.message %}
+        <hr>
+        <center>
+            <p style="color: white; font-size: 1.5em">{{ site.special_notice.message }}</p>
+            {% if site.special_notice.link  %}
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{ site.special_notice.link }}">
+                Find out more
+            </a>
+            {% endif %}
+        </center>
+      {% endif %}
     </div>
   </div>
 </header>

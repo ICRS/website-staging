@@ -132,7 +132,7 @@
 	                { key: evt.id, className: "container col-8" },
 	                _react2.default.createElement(
 	                    "div",
-	                    { className: "jumbotron", style: { padding: "1rem 2rem" } },
+	                    { className: "jumbotron " + this.props.additional_class, style: { padding: "1rem 2rem" } },
 	                    _react2.default.createElement(
 	                        "div",
 	                        { className: "row" },
@@ -171,11 +171,41 @@
 	            var _this2 = this;
 	
 	            return _react2.default.createElement(
-	                "div",
-	                null,
-	                this.props.events.map(function (evt) {
-	                    return _this2._render_single_event(evt);
-	                })
+	                "section",
+	                { className: this.props.section_class },
+	                _react2.default.createElement(
+	                    "h2",
+	                    { className: "section-heading text-center" },
+	                    this.props.title
+	                ),
+	                function () {
+	                    if (_this2.props.children) {
+	                        return _react2.default.createElement(
+	                            "div",
+	                            null,
+	                            _this2.props.children
+	                        );
+	                    } else {
+	                        return _react2.default.createElement("br", null);
+	                    }
+	                }(),
+	                function () {
+	                    if (_this2.props.events === null) {
+	                        return _react2.default.createElement(
+	                            "div",
+	                            { className: "container text-center" },
+	                            _react2.default.createElement(
+	                                "div",
+	                                { className: _this2.props.additional_class },
+	                                "Loading ..."
+	                            )
+	                        );
+	                    } else {
+	                        return _this2.props.events.map(function (evt) {
+	                            return _this2._render_single_event(evt);
+	                        });
+	                    }
+	                }()
 	            );
 	        }
 	    }]);
@@ -195,7 +225,7 @@
 	    return obj;
 	}
 	
-	function getDate(obj) {
+	function getStartDate(obj) {
 	    if (obj.start) {
 	        if (obj.start.date) {
 	            return obj.start.date.getTime();
@@ -215,7 +245,7 @@
 	
 	        var _this3 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 	
-	        _this3.state = { events: null };
+	        _this3.state = { upcoming_events: null, past_events: null };
 	        return _this3;
 	    }
 	
@@ -234,12 +264,23 @@
 	                        });
 	                    });
 	                    events = events.sort(function (a, b) {
-	                        a = getDate(a);
-	                        b = getDate(b);
+	                        a = getStartDate(a);
+	                        b = getStartDate(b);
 	
 	                        if (a < b) return -1;else if (a > b) return 1;else return 0;
 	                    });
-	                    _this4.setState({ events: events });
+	                    var now = new Date();
+	                    var upcoming_events = events.filter(function (evt) {
+	                        return getStartDate(evt) >= now.getTime();
+	                    });
+	                    var past_events = events.filter(function (evt) {
+	                        return getStartDate(evt) < now.getTime();
+	                    });
+	                    past_events.reverse();
+	                    _this4.setState({
+	                        upcoming_events: upcoming_events,
+	                        past_events: past_events
+	                    });
 	                });
 	            };
 	            cb();
@@ -250,19 +291,29 @@
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            if (this.state.events === null) {
-	                return _react2.default.createElement(
-	                    "div",
-	                    { className: "text-center" },
-	                    "Loading ..."
-	                );
-	            } else {
-	                return _react2.default.createElement(
-	                    "div",
-	                    null,
-	                    _react2.default.createElement(TopSection, { events: this.state.events })
-	                );
-	            }
+	            var google_calendar_link = "https://calendar.google.com/calendar/embed?src=icrobotics.co.uk_7vpig3lkheki7njbq1taq1soqo%40group.calendar.google.com&ctz=Europe/London";
+	
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                    TopSection,
+	                    { section_class: "non-home-top bg-primary", events: this.state.upcoming_events, title: "Upcoming events",
+	                        additional_class: "white-jumbotron" },
+	                    _react2.default.createElement("br", null),
+	                    _react2.default.createElement(
+	                        "center",
+	                        null,
+	                        _react2.default.createElement(
+	                            "a",
+	                            { target: "_none", href: google_calendar_link, className: "btn btn-default btn-xl sr-button" },
+	                            "Subscribe"
+	                        )
+	                    ),
+	                    _react2.default.createElement("br", null)
+	                ),
+	                _react2.default.createElement(TopSection, { events: this.state.past_events, title: "Past Events", additional_class: "magic-jumbotron" })
+	            );
 	        }
 	    }]);
 	

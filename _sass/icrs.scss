@@ -26,6 +26,10 @@ p {
 
 .non-home-top {
   padding-top: 150px;
+
+  h2.section-heading {
+    color: white;
+  }
 }
 
 section#footer {
@@ -55,4 +59,22 @@ section#footer {
 
 #project-showcase {
   background-color: $gray-darker;
+}
+
+.blue-jumbotron {
+  background-color: $theme-primary;
+  color: white;
+}
+
+.white-jumbotron {
+  background-color: white;
+}
+
+.magic-jumbotron {
+  color: #999;
+}
+
+
+.magic-jumbotron:hover {
+  color: #111;
 }

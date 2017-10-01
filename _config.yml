@@ -15,3 +15,7 @@ person_in_charge:
 #     email: harry@icrs.io
 #
 events_api_url: http://35.177.234.162:8102/
+
+special_notice:
+  message: ICRS Open Day on Wednesday (4 October 2016)
+  link: /events
