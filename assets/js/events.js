@@ -243,7 +243,6 @@
 	                });
 	            };
 	            cb();
-	            this._callback = setInterval(cb, 5000);
 	        }
 	    }, {
 	        key: "componentWillUnmount",

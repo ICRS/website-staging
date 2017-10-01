@@ -153,7 +153,6 @@ class App extends React.Component {
                 });
         });
         cb();
-        this._callback = setInterval(cb, 5000);
     }
 
     componentWillUnmount () {
