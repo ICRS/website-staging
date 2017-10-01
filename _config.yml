@@ -13,3 +13,5 @@ person_in_charge:
 #   piwars:
 #     name: Harry
 #     email: harry@icrs.io
+#
+events_api_url: http://35.177.234.162:8102/
