@@ -59,7 +59,8 @@ let fetch_events (config : Config.t) =
       (* TODO(fyquah): I think there needs to be some kind of thread yielder
        * here. Can't remember what the exact function call is though.
        *)
-      Gapi_services.get_events ~after:(Time.now ()) service)
+      let after = Time.sub (Time.now ()) (Time.Span.of_day 366.) in
+      Gapi_services.get_events ~after service)
 ;;
 
 let run_server ~events_ref ~(config : Config.t) =
@@ -107,7 +108,7 @@ let run_server ~events_ref ~(config : Config.t) =
           then Some (handler ~body sock req)
           else None))
   >>| fun (_ : (Async_extra.Import.Socket.Address.Inet.t, int) Cohttp_async.Server.t) ->
-  printf "Server ready and listening at port %d" config.port
+  printf "Server ready and listening at port %d\n" config.port
 ;;
 
 let command_run =
@@ -125,6 +126,8 @@ let command_run =
        in
        Async.Clock.every' ~start:Deferred.unit (Time.Span.of_min 1.) (fun () ->
            let%map events = fetch_events config in
+           printf "Fetched %d events from Google Calendar API\n"
+             (List.length events);
            events_ref := events
          );
        let%bind _ = run_server ~events_ref ~config in

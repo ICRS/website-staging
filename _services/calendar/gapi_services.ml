@@ -80,7 +80,6 @@ let init app ~access_token ~refresh_token =
 ;;
 
 let get_events ?after (t : t) =
-  let (_ : Time.t option) = after in
   let gapi_config = gapi_config_of_app t.app in
   let on_connect session =
     let get_events next_page_token session =
