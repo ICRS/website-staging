@@ -195,6 +195,18 @@
 	    return obj;
 	}
 	
+	function getDate(obj) {
+	    if (obj.start) {
+	        if (obj.start.date) {
+	            return obj.start.date.getTime();
+	        } else if (obj.start.dateTime) {
+	            return obj.start.dateTime.getTime();
+	        }
+	    }
+	
+	    return 0;
+	}
+	
 	var App = function (_React$Component2) {
 	    _inherits(App, _React$Component2);
 	
@@ -220,6 +232,12 @@
 	                            start: maybe_parse_date(evt.start),
 	                            end: maybe_parse_date(evt.end)
 	                        });
+	                    });
+	                    events = events.sort(function (a, b) {
+	                        a = getDate(a);
+	                        b = getDate(b);
+	
+	                        if (a < b) return -1;else if (a > b) return 1;else return 0;
 	                    });
 	                    _this4.setState({ events: events });
 	                });

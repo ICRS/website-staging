@@ -111,6 +111,18 @@ function maybe_parse_date (obj) {
     return obj;
 }
 
+function getDate(obj) {
+    if (obj.start) {
+        if (obj.start.date) {
+            return obj.start.date.getTime();
+        } else if (obj.start.dateTime) {
+            return obj.start.dateTime.getTime();
+        }
+    }
+
+    return 0;
+}
+
 class App extends React.Component {
 
     constructor () {
@@ -128,6 +140,14 @@ class App extends React.Component {
                             start: maybe_parse_date(evt.start),
                             end: maybe_parse_date(evt.end),
                         });
+                    });
+                    events = events.sort((a, b) => {
+                        a = getDate(a);
+                        b = getDate(b);
+
+                        if (a < b) return -1;
+                        else if (a > b) return 1;
+                        else return 0;
                     });
                     this.setState({ events: events });
                 });
