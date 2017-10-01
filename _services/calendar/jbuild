@@ -6,7 +6,9 @@
   (libraries
     (core
      async
-     gapi-ocaml))))
+     gapi-ocaml
+     cohttp.async
+     async_unix))))
 
 (install
  ((section bin)

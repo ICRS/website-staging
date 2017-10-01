@@ -84,9 +84,14 @@ let get_events ?after (t : t) =
   let gapi_config = gapi_config_of_app t.app in
   let on_connect session =
     let get_events next_page_token session =
-      print_endline "here";
+      let timeMin =
+        Option.map (fun time ->
+            GapiDate.of_string
+              (Time.to_string_iso8601_basic ~zone:Time.Zone.utc time))
+          after
+      in
       let (events, session) =
-        EventsResource.list ~calendarId:icrs_calendar_id session
+        EventsResource.list ?timeMin ~calendarId:icrs_calendar_id session
       in
       List.iter (fun (event : Event.t) ->
           Format.printf "%s\n" event.summary)
